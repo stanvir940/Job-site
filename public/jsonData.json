@@ -1,0 +1,25 @@
+{
+  "projects": [
+    {
+      "title": "Smart Home Automation",
+      "team": "Tech Innovators",
+      "technology": "React, Node.js, MongoDB",
+      "type": "Hardware",
+      "time": "6 months"
+    },
+    {
+      "title": "AI-Based Traffic Management",
+      "team": "AI Pioneers",
+      "technology": "Python, TensorFlow, Keras",
+      "type": "Software",
+      "time": "4 months"
+    },
+    {
+      "title": "E-Commerce Website",
+      "team": "Web Wizards",
+      "technology": "React, Firebase, Tailwind CSS",
+      "type": "Software",
+      "time": "3 months"
+    }
+  ]
+}
