@@ -33,7 +33,7 @@ const Login = () => {
             }
           });
 
-        // navigate(location?.state ? location?.state : "/");
+        navigate(location?.state ? location?.state : "/");
         console.log("successful", user);
       })
       .catch((error) => Swal.fire("Something error occured " + error));
