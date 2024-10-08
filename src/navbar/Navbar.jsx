@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import { useContext } from "react";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="flex px-5 py-2 bg-[#3F8EFC] text-black">
       <div className="navbar bg-[#3F8EFC]">
@@ -32,11 +41,9 @@ const Navbar = () => {
               <li>
                 <Link to={"/internships"}>Internships</Link>
               </li>
+              <li>{user?.email ? <Link to={"/myjobs"}>My Jobs</Link> : ""}</li>
               <li>
-                <Link to={"/myjobs"}>My Jobs</Link>
-              </li>
-              <li>
-                <Link to={"/messages"}>Message</Link>
+                {user?.email ? <Link to={"/messages"}>Message</Link> : ""}
               </li>
             </ul>
           </div>
@@ -50,12 +57,8 @@ const Navbar = () => {
             <li>
               <Link to={"/internships"}>Internships</Link>
             </li>
-            <li>
-              <Link to={"/myjobs"}>My Jobs</Link>
-            </li>
-            <li>
-              <Link to={"/messages"}>Message</Link>
-            </li>
+            <li>{user?.email ? <Link to={"/myjobs"}>My Jobs</Link> : ""}</li>
+            <li>{user?.email ? <Link to={"/messages"}>Message</Link> : ""}</li>
           </ul>
         </div>
       </div>
@@ -66,10 +69,14 @@ const Navbar = () => {
           className="btn btn-ghost btn-circle avatar"
         >
           <div className="w-10 rounded-full">
-            <img
-              alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-            />
+            {user?.email ? (
+              <img
+                alt="Tailwind CSS Navbar component"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              />
+            ) : (
+              <img src="" alt="Image" />
+            )}
           </div>
         </div>
         <ul
@@ -77,16 +84,24 @@ const Navbar = () => {
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
         >
           <li>
-            <a className="justify-between">
+            <Link to={"/profile"} className="justify-between">
               Profile
               <span className="badge">New</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a>Settings</a>
+            <Link to={"/settings"}>Settings</Link>
           </li>
           <li>
-            <a>Logout</a>
+            {/* <Link to={"/logout"}>Logout</Link> */}
+            {user?.email ? (
+              <>
+                {" "}
+                <button onClick={handleLogout}>Sign out</button>
+              </>
+            ) : (
+              <Link to={"/login"}>Login</Link>
+            )}
           </li>
         </ul>
       </div>

@@ -5,9 +5,12 @@ import "boxicons";
 
 import "./index.css";
 import Routes from "./routes/Routes";
+import AuthProvider from "./providers/AuthProvider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={Routes} />
+    <AuthProvider>
+      <RouterProvider router={Routes} />
+    </AuthProvider>
   </StrictMode>
 );

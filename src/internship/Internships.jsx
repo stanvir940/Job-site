@@ -1,7 +1,22 @@
+import { useEffect, useState } from "react";
+import Internship from "./Internship";
+
 const Internships = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    fetch("/jsonData.json")
+      .then((res) => res.json())
+      .then((data) => setProjects(data.projects))
+      .catch((err) => console.log(err));
+  }, []);
   return (
-    <div>
-      <h1>Internship</h1>
+    <div className="m-6">
+      <div className=" space-y-4">
+        {projects.map((data, idx) => (
+          <Internship data={data} key={idx}></Internship>
+        ))}
+      </div>
     </div>
   );
 };

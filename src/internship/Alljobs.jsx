@@ -1,5 +1,5 @@
-import JobDisplay from "./jobdisplay/JobDisplay";
 import Slidebar from "./slidebar/Slidebar";
+import Internships from "./Internships";
 
 const Alljobs = () => {
   return (
@@ -10,7 +10,7 @@ const Alljobs = () => {
           <Slidebar></Slidebar>{" "}
         </div>
         <div>
-          <JobDisplay></JobDisplay>{" "}
+          <Internships></Internships>
         </div>
       </div>
     </div>
