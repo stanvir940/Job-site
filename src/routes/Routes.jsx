@@ -7,6 +7,7 @@ import Alljobs from "../internship/Alljobs";
 import Profile from "../profile/Profile";
 import Login from "../login/Login";
 import SignUp from "../signup/SignUp";
+import ResearchIn from "../ResearchInput/ResearchIn";
 
 const Routes = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const Routes = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/form",
+        element: <ResearchIn></ResearchIn>,
       },
     ],
   },
