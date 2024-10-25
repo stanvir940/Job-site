@@ -4,10 +4,17 @@ import Internship from "./Internship";
 const Internships = () => {
   const [projects, setProjects] = useState([]);
 
+  // useEffect(() => {
+  //   fetch("/jsonData.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setProjects(data.projects))
+  //     .catch((err) => console.log(err));
+  // }, []);
+
   useEffect(() => {
-    fetch("/jsonData.json")
+    fetch("http://localhost:5001/researches")
       .then((res) => res.json())
-      .then((data) => setProjects(data.projects))
+      .then((data) => setProjects(data))
       .catch((err) => console.log(err));
   }, []);
   return (

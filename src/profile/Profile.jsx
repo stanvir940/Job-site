@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 const Profile = () => {
   const [formData, setFormData] = useState({
@@ -26,27 +27,30 @@ const Profile = () => {
 
     // Send the form data to your backend
     try {
-      const response = await fetch("/api/submit", {
+      fetch("http://localhost:5001/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log("Data submitted successfully!");
-        setFormData({
-          projectTitle: "",
-          teamName: "",
-          technology: "",
-          type: "software",
-          time: "",
-          description: "",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setFormData({
+            projectTitle: "",
+            teamName: "",
+            technology: "",
+            type: "software",
+            time: "",
+            description: "",
+          });
+          Swal.fire({
+            title: "Inserted!",
+            text: "You clicked the button!",
+            icon: "success",
+          });
         });
-      } else {
-        console.error("Submission failed!");
-      }
     } catch (error) {
       console.error("Error:", error);
     }
