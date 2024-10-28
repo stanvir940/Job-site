@@ -1,5 +1,6 @@
 import axios from "axios";
 import Form from "../form/Form";
+import Swal from "sweetalert2";
 
 const ResearchIn = () => {
   const formFields = [
@@ -18,6 +19,27 @@ const ResearchIn = () => {
       iconPath: "M2.5 3A1.5 1.5...",
     },
     {
+      name: "teamName",
+      type: "text",
+      placeholder: "Team name",
+      icon: true,
+      iconPath: "M2.5 3A1.5 1.5...",
+    },
+    {
+      name: "type",
+      type: "text",
+      placeholder: "Types of the projects",
+      icon: true,
+      iconPath: "M2.5 3A1.5 1.5...",
+    },
+    {
+      name: "time",
+      type: "text",
+      placeholder: "Time",
+      icon: true,
+      iconPath: "M2.5 3A1.5 1.5...",
+    },
+    {
       name: "partners",
       type: "text",
       placeholder: "Partners",
@@ -26,7 +48,7 @@ const ResearchIn = () => {
     },
     {
       name: "description",
-      type: "password",
+      type: "text",
       placeholder: "Description",
       icon: true,
       iconPath: "M14 6a4 4...",
@@ -40,11 +62,19 @@ const ResearchIn = () => {
         formData
       );
       if (response.status === 201) {
-        alert("Form submitted successfully!");
+        Swal.fire({
+          title: "Inserted!",
+          text: "You clicked the button!",
+          icon: "success",
+        });
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Submission failed");
+      Swal.fire({
+        title: "Failed!",
+        text: "You clicked the button!",
+        icon: "error",
+      });
     }
   };
   return (

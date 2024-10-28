@@ -25,7 +25,7 @@ const Form = ({ formFields = [], onSubmit }) => {
   };
 
   return (
-    <div className="bg-white text-gray-700 min-h-screen p-10 space-y-4">
+    <div className="bg-white text-black min-h-screen p-10 space-y-4">
       <div className="w-full text-center text-5xl font-bold text-cyan-500 my-4">
         <h1>Dynamic Input Form</h1>
       </div>
@@ -46,6 +46,7 @@ const Form = ({ formFields = [], onSubmit }) => {
                 <path d={field.iconPath} />
               </svg>
             )}
+
             <input
               type={field.type}
               name={field.name}

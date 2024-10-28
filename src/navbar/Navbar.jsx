@@ -90,7 +90,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to={"/settings"}>Settings</Link>
+            <Link to={"/form"}>Settings</Link>
           </li>
           <li>
             {/* <Link to={"/logout"}>Logout</Link> */}
