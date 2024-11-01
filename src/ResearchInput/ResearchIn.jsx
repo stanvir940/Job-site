@@ -1,7 +1,10 @@
 import axios from "axios";
 import Form from "../form/Form";
 import Swal from "sweetalert2";
+import { getAuth } from "firebase/auth";
+import app from "../firebase/firebase.config";
 
+const auth = getAuth(app);
 const ResearchIn = () => {
   const formFields = [
     {
@@ -9,58 +12,64 @@ const ResearchIn = () => {
       type: "text",
       placeholder: "Project Title",
       icon: true,
-      iconPath: "M9.965 11.026...",
     },
     {
       name: "technology",
       type: "text",
       placeholder: "Technology Used",
       icon: true,
-      iconPath: "M2.5 3A1.5 1.5...",
     },
     {
       name: "teamName",
       type: "text",
       placeholder: "Team name",
       icon: true,
-      iconPath: "M2.5 3A1.5 1.5...",
     },
     {
       name: "type",
       type: "text",
       placeholder: "Types of the projects",
       icon: true,
-      iconPath: "M2.5 3A1.5 1.5...",
     },
     {
       name: "time",
       type: "text",
       placeholder: "Time",
       icon: true,
-      iconPath: "M2.5 3A1.5 1.5...",
     },
     {
       name: "partners",
       type: "text",
       placeholder: "Partners",
       icon: true,
-      iconPath: "M8 8a3 3 0 1 0 0-6...",
     },
     {
       name: "description",
       type: "text",
       placeholder: "Description",
       icon: true,
-      iconPath: "M14 6a4 4...",
     },
   ];
 
   const onSubmit = async (formData) => {
+    const token = await auth.currentUser.getIdToken();
+
     try {
-      const response = await axios.post(
-        "http://localhost:5001/submit",
-        formData
-      );
+      const response = await axios
+        .post(
+          "http://localhost:5001/submit",
+          {
+            data: formData,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => console.log(response))
+        .catch((error) => console.error("Error:", error));
       if (response.status === 201) {
         Swal.fire({
           title: "Inserted!",
