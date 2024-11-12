@@ -1,5 +1,9 @@
 const Internship = ({ data }) => {
-  const { title, teamName, technology, type, time, description } = data;
+  const { title, teamName, technology, type, time, description, partners } =
+    data.data;
+  // const { title1, teamName1, technology1, type1, time1, description1 } =
+  //   data.data;
+
   return (
     <div>
       <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-300">
@@ -10,6 +14,9 @@ const Internship = ({ data }) => {
           </p>
           <p className="text-gray-600">
             <strong className="text-blue-600">Technology:</strong> {technology}
+          </p>
+          <p className="text-gray-600">
+            <strong className="text-blue-600">Technology:</strong> {partners}
           </p>
           <p className="text-gray-600">
             <strong className="text-blue-600">Type:</strong> {type}

@@ -15,7 +15,7 @@ const Internships = () => {
     fetch("http://localhost:5001/researches")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setProjects(data);
       })
       .catch((err) => console.log(err));

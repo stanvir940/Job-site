@@ -22,6 +22,7 @@ const Form = ({ formFields = [], onSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     onSubmit(formData);
+    setFormData([]);
   };
 
   return (

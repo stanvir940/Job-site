@@ -70,20 +70,19 @@ const ResearchIn = () => {
         )
         .then((response) => console.log(response))
         .catch((error) => console.error("Error:", error));
-      if (response.status === 201) {
-        Swal.fire({
-          title: "Inserted!",
-          text: "You clicked the button!",
-          icon: "success",
-        });
-      }
-    } catch (error) {
-      console.error("Error:", error);
+
       Swal.fire({
-        title: "Failed!",
+        title: "Inserted!",
         text: "You clicked the button!",
-        icon: "error",
+        icon: "success",
       });
+    } catch (error) {
+      console.error("Error::", error);
+      // Swal.fire({
+      //   title: "Failed!",
+      //   text: "You clicked the button!",
+      //   icon: "error",
+      // });
     }
   };
   return (
